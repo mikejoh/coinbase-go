@@ -42,20 +42,22 @@ func New(options ...Option) *Client {
 
 type Option func(*Client)
 
-func OptionApiKey(apiKey string) func(*Client) {
+func ApiKey(apiKey string) func(*Client) {
 	return func(c *Client) { c.apiKey = apiKey }
 }
 
-func OptionSecret(secret string) func(*Client) {
+func Secret(secret string) func(*Client) {
 	return func(c *Client) { c.secret = secret }
 }
 
-func OptionTimeout(t time.Duration) func(*Client) {
+func Timeout(t time.Duration) func(*Client) {
 	return func(c *Client) { c.client.Timeout = t }
 }
 
-func OptionDebug(b bool) func(*Client) {
-	return func(c *Client) {
-		c.debug = b
-	}
+func UserAgent(ua string) func(*Client) {
+	return func(c *Client) { c.userAgent = ua }
+}
+
+func Debug(b bool) func(*Client) {
+	return func(c *Client) { c.debug = b }
 }
