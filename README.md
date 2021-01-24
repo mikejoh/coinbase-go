@@ -29,6 +29,13 @@ func main() {
 	fmt.Println(exchangeRates)
 }
 ```
+
+## TODO
+* Rate limit
+* Pagination
+* Header signing (auth)
+* Implement the rest of the API calls
+
 ## Resources
 
 [v2 API ref](https://developers.coinbase.com/api/v2#introduction)

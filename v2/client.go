@@ -5,10 +5,6 @@ import (
 	"time"
 )
 
-// TODO: Rate limit
-// TODO: Pagination
-// TODO: GET, POST, PUT, DELETE ops
-
 const (
 	apiBaseURL       = "https://api.coinbase.com/v2"
 	defaultUserAgent = "coinbase-go"
