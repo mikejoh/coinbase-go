@@ -1,23 +1,39 @@
-package coinbase
+package v2
 
-/*
-func (c *Client) GetExchangeRates(ctx context.Context, currency string) (*ExchangeRates, error) {
-	path := "exchange-rates"
+import (
+	"context"
+	"encoding/json"
+	"fmt"
+	"net/http"
+)
+
+type ExchangeRates struct {
+	Data struct {
+		Currency string            `json:"currency"`
+		Rates    map[string]string `json:"rates"`
+	} `json:"data"`
+}
+
+func (c *Client) ExchangeRates(ctx context.Context, currency string) (*ExchangeRates, error) {
+	endpoint := "exchange-rates"
 	method := "GET"
 
-	req, err := http.NewRequest("GET", fmt.Sprintf("%s/%s?currency=%s", c.baseURL.String(), path, currency), nil)
+	path := fmt.Sprintf("%s/%s", c.Config.baseURL, endpoint)
+
+	if currency != "" {
+		path = fmt.Sprintf("%s/%s?currency=%s", c.Config.baseURL, endpoint, currency)
+	}
+
+
+	req, err := http.NewRequest(method, path, nil)
 	if err != nil {
 		return nil, err
 	}
 
 	req = req.WithContext(ctx)
 
-	now := time.Now().Unix() // Within 30 seconds of server time
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("CB-ACCESS-KEY", c.config.apiKey)
-	req.Header.Set("CB-ACCESS-SIGN", c.signHeader(now, path, strings.ToUpper(method)))
-	req.Header.Set("CB-ACCESS-TIMESTAMP", fmt.Sprint(now))
 
 	res, err := c.client.Do(req)
 	if err != nil {
@@ -57,4 +73,3 @@ func (er *ExchangeRates) String() string {
 
 	return ""
 }
-*/
