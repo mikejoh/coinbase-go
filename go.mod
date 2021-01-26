@@ -1,3 +1,3 @@
-module coinbase-go
+module coinbase
 
 go 1.15
