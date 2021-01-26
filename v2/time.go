@@ -10,7 +10,7 @@ import (
 type serverTime struct {
 	Data struct {
 		ISO   string `json:"iso"`
-		Epoch int64 `json:"currency`
+		Epoch int64  `json:"epoch"`
 	} `json:"data"`
 }
 

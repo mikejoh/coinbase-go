@@ -25,7 +25,6 @@ func (c *Client) ExchangeRates(ctx context.Context, currency string) (*exchangeR
 		path = fmt.Sprintf("%s/%s?currency=%s", c.Config.baseURL, endpoint, currency)
 	}
 
-
 	req, err := http.NewRequest(method, path, nil)
 	if err != nil {
 		return nil, err

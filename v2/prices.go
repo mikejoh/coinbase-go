@@ -11,7 +11,7 @@ import (
 type prices struct {
 	Data struct {
 		Amount   string `json:"amount"`
-		Currency string `json:"currency`
+		Currency string `json:"currency"`
 	} `json:"data"`
 	PriceType    string `json:"price_type"`
 	CurrencyPair string `json:"currency_pair"`

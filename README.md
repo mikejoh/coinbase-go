@@ -1,41 +1,70 @@
 # coinbase-go
 
-_Golang package to interact with the Coinbase v2 API._
+_Golang package to interact with the Coinbase **v2 API**._
 
-## Example usage
+## Examples
 
+Instantiate client with config:
 ```go
-package main
-
-import (
-	v2 "coinbase-go/v2"
-	"context"
-	"fmt"
-	"log"
-)
-
 func main() {
 	config := v2.NewConfig(
 		v2.ApiKey("key"),
 		v2.Secret("secret"),
 	)
+
 	client := v2.NewClient(config)
-
-	exchangeRates, err := client.ExchangeRates(context.Background(), "BTC")
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	fmt.Println(exchangeRates)
 }
 ```
 
-## TODO
-* Rate limit
-* Pagination
-* Header signing (auth)
-* Implement the rest of the API calls
+### Exchange rates
 
+```go
+rates, err := client.ExchangeRates(context.Background(), "BTC")
+if err != nil {
+	log.Fatal(err)
+}
+
+fmt.Println(rates)
+```
+### Currencies
+
+```go
+currencies, err := client.Currencies(context.Background())
+if err != nil {
+	log.Fatal(err)
+}
+
+fmt.Println(currencies)
+```
+
+### Prices
+
+```go
+prices, err := client.Prices(context.Background(), "BTC-SEK", "sell")
+if err != nil {
+	log.Fatal(err)
+}
+
+fmt.Println(prices)
+```
+
+### Time
+
+```go
+time, err := client.Time(context.Background())
+if err != nil {
+	log.Fatal(err)
+}
+
+fmt.Println(time)
+```
 ## Resources
 
 [v2 API ref](https://developers.coinbase.com/api/v2#introduction)
+## TODO
+* [ ] Rate limit
+* [ ] Pagination
+* [ ] Header signing (auth)
+* [ ] Implement Wallet endpoints
+* [ ] Implement a more generic way of making client API calls, DRY.
+
