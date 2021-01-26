@@ -7,14 +7,15 @@ import (
 	"net/http"
 )
 
-type ExchangeRates struct {
+type exchangeRates struct {
 	Data struct {
 		Currency string            `json:"currency"`
 		Rates    map[string]string `json:"rates"`
 	} `json:"data"`
 }
 
-func (c *Client) ExchangeRates(ctx context.Context, currency string) (*ExchangeRates, error) {
+// ExchangeRates
+func (c *Client) ExchangeRates(ctx context.Context, currency string) (*exchangeRates, error) {
 	endpoint := "exchange-rates"
 	method := "GET"
 
@@ -31,8 +32,6 @@ func (c *Client) ExchangeRates(ctx context.Context, currency string) (*ExchangeR
 	}
 
 	req = req.WithContext(ctx)
-
-	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Accept", "application/json")
 
 	res, err := c.client.Do(req)
@@ -55,7 +54,7 @@ func (c *Client) ExchangeRates(ctx context.Context, currency string) (*ExchangeR
 		return nil, fmt.Errorf("unknown error, status code: %d", res.StatusCode)
 	}
 
-	var exchangeRates ExchangeRates
+	var exchangeRates exchangeRates
 
 	if err = json.NewDecoder(res.Body).Decode(&exchangeRates); err != nil {
 		return nil, fmt.Errorf("%s", err)
@@ -64,7 +63,7 @@ func (c *Client) ExchangeRates(ctx context.Context, currency string) (*ExchangeR
 	return &exchangeRates, nil
 }
 
-func (er *ExchangeRates) String() string {
+func (er *exchangeRates) String() string {
 	fmt.Printf("currency: %s\n", er.Data.Currency)
 	fmt.Println("rates:")
 	for k, v := range er.Data.Rates {
