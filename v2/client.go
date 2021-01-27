@@ -1,7 +1,13 @@
 package v2
 
 import (
+	"crypto/hmac"
+	"crypto/sha256"
+	"encoding/hex"
 	"net/http"
+	"net/url"
+	"strconv"
+	"strings"
 	"time"
 )
 
@@ -46,6 +52,41 @@ func NewClient(config *Config) *Client {
 	}
 
 	return client
+}
+
+func (c *Client) NewRequest(method string, u *url.URL, authenticate bool, json []byte) (*http.Request, error) {
+	req, err := http.NewRequest(method, u.String(), nil)
+	if err != nil {
+		return nil, err
+	}
+
+	if authenticate {
+		epoch := strconv.FormatInt(time.Now().Unix(), 10)
+
+		unsigned := epoch + strings.ToUpper(method) + u.Path
+
+		if len(json) > 0 {
+			unsigned = unsigned + string(json)
+		}
+
+		req.Header.Set("CB-ACCESS-KEY", c.Config.apiKey)
+		req.Header.Set("CB-ACCESS-TIMESTAMP", epoch)
+
+		h := hmac.New(sha256.New, []byte(c.Config.secret))
+		h.Write([]byte(unsigned))
+
+		signed := hex.EncodeToString(h.Sum(nil))
+
+		req.Header.Set("CB-ACCESS-SIGN", signed)
+	}
+
+	if req.Method != "GET" {
+		req.Header.Set("Content-Type", "application/json")
+	}
+
+	req.Header.Set("Accept", "application/json")
+
+	return req, nil
 }
 
 type Option func(*Config)
