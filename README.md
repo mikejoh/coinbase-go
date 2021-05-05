@@ -73,6 +73,7 @@ fmt.Println(time)
 
 [v2 API ref](https://developers.coinbase.com/api/v2#introduction)
 ## Todo
+* [ ] Add code documentation
 * [ ] Rate limit
 * [ ] Pagination
 * [ ] Header signing (auth)
