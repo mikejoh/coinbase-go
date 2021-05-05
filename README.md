@@ -1,7 +1,8 @@
 # coinbase-go
 
-_Golang package to interact with the Coinbase **v2 API**._
+_A Golang package to interact with the [Coinbase](https://www.coinbase.com/) **v2 API**._
 
+_Note that this project is still work in progress!_
 ## Examples
 
 Instantiate client with config:
