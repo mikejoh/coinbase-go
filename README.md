@@ -1,8 +1,18 @@
 # coinbase-go
 
-_A Golang package to interact with the [Coinbase](https://www.coinbase.com/) **v2 API**._
+An alternative Golang package to interact with the [Coinbase](https://www.coinbase.com/) **v2 API**.
 
 _Note that this project is still work in progress!_
+
+## Installation
+Install:
+```
+go get github.com/mikejoh/coinbase-go
+```
+Import:
+```go
+import "github.com/mikejoh/coinbase-go/v2"
+```
 ## Examples
 
 Instantiate client with config:
@@ -62,7 +72,7 @@ fmt.Println(time)
 ## Resources
 
 [v2 API ref](https://developers.coinbase.com/api/v2#introduction)
-## TODO
+## Todo
 * [ ] Rate limit
 * [ ] Pagination
 * [ ] Header signing (auth)
