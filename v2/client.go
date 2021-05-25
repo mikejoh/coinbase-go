@@ -101,6 +101,13 @@ func Secret(s string) func(*Config) {
 	return func(c *Config) { c.secret = s }
 }
 
+func BaseURL(u string) func(*Config) {
+	if u == "" {
+		return func(c *Config) { c.baseURL = apiBaseURL }
+	}
+	return func(c *Config) { c.baseURL = u }
+}
+
 func Timeout(t time.Duration) func(*Config) {
 	return func(c *Config) { c.timeout = t }
 }
