@@ -17,7 +17,7 @@ type currencies struct {
 	Data []currency `json:"data"`
 }
 
-// Currencies
+// Currencies lists known currencies. 
 func (c *Client) Currencies(ctx context.Context) (*currencies, error) {
 	endpoint := "currencies"
 	method := "GET"

@@ -14,7 +14,7 @@ type serverTime struct {
 	} `json:"data"`
 }
 
-// Time
+// Time gets the Coinbase API server time.
 func (c *Client) Time(ctx context.Context) (*serverTime, error) {
 	endpoint := "time"
 	method := "GET"

@@ -17,7 +17,7 @@ type prices struct {
 	CurrencyPair string `json:"currency_pair"`
 }
 
-// Prices
+// Prices gets the total price to buy one bitcoin or ether.
 func (c *Client) Prices(ctx context.Context, currencyPair string, priceType string) (*prices, error) {
 	endpoint := "prices"
 	method := "GET"

@@ -14,7 +14,7 @@ type exchangeRates struct {
 	} `json:"data"`
 }
 
-// ExchangeRates
+// ExchangeRates gets current exchange rates.
 func (c *Client) ExchangeRates(ctx context.Context, currency string) (*exchangeRates, error) {
 	endpoint := "exchange-rates"
 	method := "GET"
