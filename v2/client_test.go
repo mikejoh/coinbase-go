@@ -1,5 +1,26 @@
 package v2
 
+import "testing"
+
+func TestNewConfig(t *testing.T) {
+	tests := map[string]struct {
+		config *Config
+		want   string
+	}{
+		"Set Base URL":     {NewConfig(BaseURL("https://mock.local")), "https://mock.local"},
+		"Default Base URL": {NewConfig(), "https://api.coinbase.com/v2"},
+	}
+
+	for name, tc := range tests {
+		t.Run(name, func(t *testing.T) {
+			got := tc.config.baseURL
+			if got != tc.want {
+				t.Fatalf("expected %s got %s", tc.want, got)
+			}
+		})
+	}
+}
+
 /*
 func TestAuthenticatedNewRequest(t *testing.T) {
 	fakeApiKey := "key"
