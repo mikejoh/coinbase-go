@@ -22,6 +22,7 @@ type user struct {
 	} `json:"data"`
 }
 
+// User gets the current user’s public information.
 func (c *Client) GetUser(ctx context.Context) (*user, error) {
 	endpoint := "user"
 	method := "GET"

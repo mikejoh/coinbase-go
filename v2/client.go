@@ -30,6 +30,7 @@ type Config struct {
 	debug     bool
 }
 
+// NewConfig returns a config with sane defaults.
 func NewConfig(options ...Option) *Config {
 	config := &Config{
 		baseURL:   apiBaseURL,
@@ -43,6 +44,7 @@ func NewConfig(options ...Option) *Config {
 	return config
 }
 
+// NewClient returns a client with sane defaults.
 func NewClient(config *Config) *Client {
 	client := &Client{
 		client: &http.Client{
