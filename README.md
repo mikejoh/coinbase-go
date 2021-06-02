@@ -1,5 +1,7 @@
 # coinbase-go
 
+![Test workflow](https://github.com/mikejoh/coinbase-go/actions/workflows/test.yml/badge.svg)
+
 An alternative Golang package to interact with the [Coinbase](https://www.coinbase.com/) **v2 API**.
 
 _Note that this project is still work in progress!_
