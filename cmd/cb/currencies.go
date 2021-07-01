@@ -17,7 +17,7 @@ var currenciesCmd = &cobra.Command{
 
 		client := v2.NewClient(config)
 
-		ctx := context.Background()
+		ctx := context.TODO()
 
 		c, err := client.Currencies(ctx)
 		if err != nil {
