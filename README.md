@@ -13,7 +13,7 @@ go get github.com/mikejoh/coinbase-go
 ```
 Import:
 ```go
-import "github.com/mikejoh/coinbase-go/v2"
+import "github.com/mikejoh/coinbase-go"
 ```
 ## Examples
 
