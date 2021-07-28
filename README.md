@@ -11,26 +11,29 @@ Install:
 ```
 go get github.com/mikejoh/coinbase-go
 ```
-Import:
+Import (with alias):
 ```go
-import "github.com/mikejoh/coinbase-go"
+import cb "github.com/mikejoh/coinbase-go"
 ```
 ## Examples
 
-Instantiate client with config:
+Instantiate client with config (using import alias):
 ```go
+package main
+
+import cb "github.com/mikejoh/coinbase-go"
+
 func main() {
-	config := v2.NewConfig(
-		v2.ApiKey("key"),
-		v2.Secret("secret"),
+	config := cb.NewConfig(
+		cb.ApiKey("key"),
+		cb.Secret("secret"),
 	)
 
-	client := v2.NewClient(config)
+	client := cb.NewClient(config)
 }
 ```
 
 ### Exchange rates
-
 ```go
 rates, err := client.ExchangeRates(context.Background(), "BTC")
 if err != nil {
@@ -40,7 +43,6 @@ if err != nil {
 fmt.Println(rates)
 ```
 ### Currencies
-
 ```go
 currencies, err := client.Currencies(context.Background())
 if err != nil {
@@ -51,7 +53,6 @@ fmt.Println(currencies)
 ```
 
 ### Prices
-
 ```go
 prices, err := client.Prices(context.Background(), "BTC-SEK", "sell")
 if err != nil {
@@ -62,7 +63,6 @@ fmt.Println(prices)
 ```
 
 ### Time
-
 ```go
 time, err := client.Time(context.Background())
 if err != nil {
