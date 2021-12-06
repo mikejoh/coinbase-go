@@ -71,6 +71,23 @@ if err != nil {
 
 fmt.Println(time)
 ```
+
+## Coinbase CLI
+
+1. Build:
+```
+make client
+```
+The binary is created in `./bin`.
+
+2. Example usage:
+```
+./bin/cb currencies
+./bin/cb prices --pair BTC-SEK --type buy
+./bin/cb exchange-rates
+./bin/cb exchange-rates --currency SEK
+./bin/cb time
+```
 ## Resources
 
 [v2 API ref](https://developers.coinbase.com/api/v2#introduction)
