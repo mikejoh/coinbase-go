@@ -1,10 +1,10 @@
-package cb
+package main
 
 import (
 	"context"
 	"fmt"
 
-	v2 "github.com/mikejoh/coinbase-go/v2"
+	"github.com/mikejoh/coinbase-go"
 	"github.com/spf13/cobra"
 )
 
@@ -22,10 +22,9 @@ var exchangeRatesCmd = &cobra.Command{
 	SilenceUsage:  true,
 	SilenceErrors: true,
 	RunE: func(cmd *cobra.Command, args []string) error {
-		config := v2.NewConfig()
-		client := v2.NewClient(config)
+		client := coinbase.NewClient(coinbase.NewConfig())
 
-		ctx := context.TODO()
+		ctx := context.Background()
 		r, err := client.ExchangeRates(ctx, exchangeRateOpts.currency)
 		if err != nil {
 			return err
