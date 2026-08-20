@@ -1,6 +1,9 @@
 # coinbase-go
 
-![Test workflow](https://github.com/mikejoh/coinbase-go/actions/workflows/test.yml/badge.svg)
+[![CI](https://github.com/mikejoh/coinbase-go/actions/workflows/go.yml/badge.svg)](https://github.com/mikejoh/coinbase-go/actions/workflows/go.yml)
+[![Release](https://img.shields.io/github/v/release/mikejoh/coinbase-go)](https://github.com/mikejoh/coinbase-go/releases/latest)
+[![Go Report Card](https://goreportcard.com/badge/github.com/mikejoh/coinbase-go)](https://goreportcard.com/report/github.com/mikejoh/coinbase-go)
+[![License](https://img.shields.io/github/license/mikejoh/coinbase-go)](https://github.com/mikejoh/coinbase-go/blob/main/LICENSE)
 
 An alternative Golang package to interact with the [Coinbase](https://www.coinbase.com/) **v2 API**.
 
@@ -76,7 +79,7 @@ fmt.Println(time)
 
 1. Build:
 ```
-make client
+make build
 ```
 The binary is created in `./bin`.
 
